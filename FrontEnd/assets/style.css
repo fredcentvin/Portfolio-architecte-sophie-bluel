@@ -75,7 +75,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -184,5 +183,40 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+
+
+/** ajout boutons sélction**/
+#portfolio {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	gap:100px;
+	position:relative;
+	margin-top: 100px;	
+}
+
+#portfolio> .blocbtn {
+	display: flex;
+	flex-direction: row;
+	gap:20px;
+	position: absolute;
+	top:50px;
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'syne';
+	font-size: 18px;
+	color:#1D6154;
+	border: 1px solid #1D6154;
+	border-radius: 25px;
+	gap:10px;
+	cursor: pointer;
+	padding: 15px 20px;
 }
 
