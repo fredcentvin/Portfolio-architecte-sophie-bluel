@@ -1,87 +1,115 @@
-// récupération des catégories
-async function recupererCategories() {
-        const reponse = await fetch("http://localhost:5678/api/categories");
-        return await reponse.json();
-        // console.log(reponse);   
+//** constantes */
+const apiUrl = "http://localhost:5678/api/";
+let works = [];
+let categories = [];
+
+
+//** récupération des travaux et stockage dans variable works */
+async function getWorks() {
+    const response = await fetch(apiUrl+"works");     
+    works = await response.json();
+    // console.log(works)
 }
-recupererCategories();
 
 
-async function tabcategories() {
-    const donnees = await recupererCategories();
-    if (donnees) {
-        const monTableau = donnees.map((element) => element.name);
-        // console.log(monTableau);
-    }
+//** récupération des catégories */
+async function getCategories() {
+    const response = await fetch(apiUrl+"categories");
+    categories = await response.json(); 
+    // console.log(categories)    
 }
-tabcategories();
 
 
+//** création en dur dans html du bouton categorie"tous" */
+const buttons = document.querySelectorAll("btn");
+let blocButton = document.createElement("div");
+let sectionBloc = document.getElementById("portfolio");
+let buttonId0 = document.createElement("btn");
+const gallery = document.createElement("div");
+sectionBloc.appendChild(blocButton);
+blocButton.classList.add("blocbtn");
+blocButton.appendChild(buttonId0);
+buttonId0.setAttribute("id","0");
+buttonId0.classList.add("btn");
+buttonId0.innerHTML=("tous");
 
-//  création des boutons
-let blocbutton = document.createElement("div");
-
-let sectionbloc = document.getElementById("portfolio");
-sectionbloc.appendChild(blocbutton);
-blocbutton.classList.add("blocbtn");
-
-let buttontous = document.createElement("div");
-blocbutton.appendChild(buttontous);
-buttontous.classList.add("btn");
-buttontous.innerHTML=("tous");
-
-let buttonobjet = document.createElement("div");
-blocbutton.appendChild(buttonobjet);
-buttonobjet.classList.add("btn");
-buttonobjet.innerHTML= ("objet")
-
-let buttonappartement = document.createElement("div");
-blocbutton.appendChild(buttonappartement);
-buttonappartement.classList.add("btn");
-buttonappartement.innerHTML=("Appartements");
-
-let buttonhoteletrestos = document.createElement("div");
-blocbutton.appendChild(buttonhoteletrestos);
-buttonhoteletrestos.classList.add("btn");
-buttonhoteletrestos.innerHTML=("Hotels &t restaurants");
-
-
-// variables
-const gallery = document.createElement("div")
-portfolio.appendChild(gallery)
-gallery.classList.add("gallery")
-
-
-
-// récupération des travaux
-async function travaux () {
-        const toustravaux = await fetch("http://localhost:5678/api/works");     
-        return await toustravaux.json();
-    }
-travaux();
-
-
-
-// affichage des travaux
- async function displaytravo () {
-    const tabtravo = await travaux()
-    console.log(tabtravo)   
-    tabtravo.forEach(element => {
-        const figure= document.createElement("figure");
-        const img = document.createElement("img");
-        const figcaption = document.createElement("figcaption");
-        img.src= element.imageUrl;
-        title = element.title;
-        alt = element.title;
-        console.log(title)
-        gallery.appendChild(figure);
-        figure.appendChild(img);
-        img.classList.add("gallery.img")
-        figure.appendChild(figcaption);
-        const titleelement= document.createElement("p")
-        titleelement.textContent=title
-        figcaption.appendChild(titleelement)
-        
+//** création des boutons-filtre categories */
+async function createBtns() {
+    categories.forEach((element) => {
+        const btn = document.createElement("button");
+        blocButton.appendChild(btn);
+        btn.id = element.id;
+        btn.classList.add("btn");
+        btn.textContent = element.name;
     })
 }
-displaytravo();
+
+
+
+//** filtrage categories au bouton actif*/
+async function filtercategories() { 
+    blocButton.addEventListener("click", (event) =>{
+    btnid = event.target.id
+    // console.log(btnid)
+    gallery.innerHTML=""
+    if (btnid != "0"){
+       
+         const workFilter = works.filter((work) =>work.categoryId == btnid)
+         workFilter.forEach((element)=> {
+            const figure = document.createElement("figure");
+            const img = document.createElement("img");
+            const figcaption = document.createElement("figcaption");
+            img.src = element.imageUrl;
+            title = element.title;
+            alt = element.title;
+            id = element.categoryId;
+            gallery.appendChild(figure);
+            figure.appendChild(img);
+            img.classList.add("gallery.img");
+            figure.appendChild(figcaption);
+            const titleElement= document.createElement("p");
+            titleElement.textContent=title;
+            figcaption.appendChild(titleElement);  
+         })
+    }
+    else {
+        displayTravo()
+    }
+    }) 
+} 
+filtercategories()
+
+
+//** création gallery dans html */
+portfolio.appendChild(gallery);
+gallery.classList.add("gallery");
+
+//** affichage de tous les travaux dans la gallery */
+async function displayTravo() {  
+    works.forEach(element => {
+    const figure = document.createElement("figure");
+    const img = document.createElement("img");
+    const figcaption = document.createElement("figcaption");
+    img.src = element.imageUrl;
+    title = element.title;
+    alt = element.title;
+    id = element.categoryId;
+    gallery.appendChild(figure);
+    figure.appendChild(img);
+    img.classList.add("gallery.img");
+    figure.appendChild(figcaption);
+    const titleElement= document.createElement("p");
+    titleElement.textContent=title;
+    figcaption.appendChild(titleElement);
+})
+}
+
+
+//**fonction initialisation */
+document.addEventListener("DOMContentLoaded",async()=> {
+    await getWorks();
+    await getCategories();
+    await createBtns();
+    await filtercategories();
+    await displayTravo();
+})

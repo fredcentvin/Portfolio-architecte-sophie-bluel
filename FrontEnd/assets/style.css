@@ -217,6 +217,10 @@ footer nav ul {
 	border-radius: 25px;
 	gap:10px;
 	cursor: pointer;
-	padding: 15px 20px;
+	padding: 15px 15px;
+}
+.btn :active {
+	color:white;
+	background-color:#1D6154 ;
 }
 
