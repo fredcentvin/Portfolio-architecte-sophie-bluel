@@ -33,6 +33,7 @@ buttonId0.setAttribute("id","0");
 buttonId0.classList.add("btn");
 buttonId0.innerHTML=("tous");
 
+
 //** création des boutons-filtre categories */
 async function createBtns() {
     categories.forEach((element) => {
@@ -49,12 +50,12 @@ async function createBtns() {
 //** filtrage categories au bouton actif*/
 async function filtercategories() { 
     blocButton.addEventListener("click", (event) =>{
-    btnid = event.target.id
-    // console.log(btnid)
-    gallery.innerHTML=""
+    btnid = event.target.id;
+    event.target.classList.add('btnactive');
+    gallery.innerHTML="";
+    
     if (btnid != "0"){
-       
-         const workFilter = works.filter((work) =>work.categoryId == btnid)
+         const workFilter = works.filter((work) =>work.categoryId == btnid);
          workFilter.forEach((element)=> {
             const figure = document.createElement("figure");
             const img = document.createElement("img");
@@ -69,11 +70,11 @@ async function filtercategories() {
             figure.appendChild(figcaption);
             const titleElement= document.createElement("p");
             titleElement.textContent=title;
-            figcaption.appendChild(titleElement);  
+            figcaption.appendChild(titleElement);   
          })
     }
     else {
-        displayTravo()
+        displayTravo() 
     }
     }) 
 } 
