@@ -24,7 +24,7 @@ async function getCategories() {
 const buttons = document.querySelectorAll("btn");
 let blocButton = document.createElement("div");
 let sectionBloc = document.getElementById("portfolio");
-let buttonId0 = document.createElement("btn");
+let buttonId0 = document.createElement("button");
 const gallery = document.createElement("div");
 sectionBloc.appendChild(blocButton);
 blocButton.classList.add("blocbtn");
@@ -46,13 +46,18 @@ async function createBtns() {
 }
 
 
-
 //** filtrage categories au bouton actif*/
 async function filtercategories() { 
     blocButton.addEventListener("click", (event) =>{
     btnid = event.target.id;
-    event.target.classList.add('btnactive');
-    gallery.innerHTML="";
+    let activebtn = btnid || btnId0
+    if(activebtn == btnid){
+        event.target.classList.add("btnactive");
+         }
+         else {
+            event.target.classList.remove("btnactive")
+         }
+    gallery.innerHTML=""; 
     
     if (btnid != "0"){
          const workFilter = works.filter((work) =>work.categoryId == btnid);
@@ -70,10 +75,16 @@ async function filtercategories() {
             figure.appendChild(figcaption);
             const titleElement= document.createElement("p");
             titleElement.textContent=title;
-            figcaption.appendChild(titleElement);   
+            figcaption.appendChild(titleElement); 
          })
     }
     else {
+        if(activebtn == btnid){
+            event.target.classList.add("btnactive");
+             }
+             else {
+                event.target.classList.remove("btnactive")
+             }
         displayTravo() 
     }
     }) 

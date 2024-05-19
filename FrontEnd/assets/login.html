@@ -7,7 +7,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
     <title>Sophie Bluel - Architecte d'intérieur</title>
 </head>
 <body>
@@ -23,14 +24,16 @@
         </nav>
     </header>
     <section id ="connexion">
-        <h2>Log in</h2>
+        <h2>Login</h2>
+        <p></p>
         <form method="post" action="">
             <p>E-mail</p>
-            <input type="email" name="E-mail">
+            <input type="email" name="E-mail" id="mail" required>
             <p>Mot de passe</p>
-            <input type="password" name="Mot de passe">   
+            <input type="password" name="Mot de passe" id="password" required>  
+            <input type="submit" value="Se connecter" id="submit"> 
         </form>
-        <input type="submit" value="Se connecter">
+       
         <a href="">Mot de passe oublié</a>
     </section>
     <footer>
