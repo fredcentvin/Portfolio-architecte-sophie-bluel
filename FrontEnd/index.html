@@ -7,21 +7,33 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="./assets/recup.js"defer></script>
+	<script src="./assets/JS/filtrage.js"defer></script>
+	<script src="./assets/JS/modal.js "defer></script>
+	
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li><a href="./assets/login.html">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+	<div class="mode_edition" id="editing" style="display: none;">
+		<i class="fa-regular fa-pen-to-square"></i>
+		<p>Mode édition</p>
+	</div>
+	<div class="mode_standard" id="standard">
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="#projets">projets</a></li>
+				<li><a href="#contact">contact</a></li>
+				<li style="display:block;" id="login"><a href="./assets/login.html">login</a> </li>
+				<li style="display:none;" id="logout"><a href="#">logout</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</div>
 </header>
 <main>
 	<section id="introduction">
@@ -36,10 +48,19 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="modifProjets" id="modifs" style="display:none">
+			<i class="fa-regular fa-pen-to-square"></i>
+			<p>Modifier</p>
+		</div>
+			<h2 id="projets">Mes Projets</h2>
 		
+		<div class="filterContainer" id="filters" style="display: block;">
+			<button class="filter active" id="btTous" style="display:block;">Tous</button>
+		</div>
+		<div class="galleryContainer" id="gallery">
 			
-		
+		</div>
+			
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>
@@ -54,6 +75,21 @@
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
+
+	<div id="modal1" class="modal" style="display:none">
+        <div class ="modal-wrapper">
+			
+            <div class="title">  
+                <h1>Galerie photo</h1>
+				<button class="closeModalButton" id="closeModal"><i class="fa-regular fa-rectangle-xmark"></i></button>
+            </div>
+                <div class="picture_container" id="deleteModal">
+					
+                </div>
+            <button class="filter">Ajouter une photo</button>
+        </div>
+        
+    </div>
 </main>
 
 <footer>

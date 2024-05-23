@@ -59,6 +59,43 @@ header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px auto;
+	margin-top: 0;
+	flex-wrap: wrap;
+}
+
+header .mode_edition {
+	display: flex;
+	background: black;
+	color: white;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	width: 1440px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+}
+
+
+.mode_edition .fa-regular {
+	padding-right: 10px;
+	width: 20px;
+	height: 20px;
+	color:white;
+	cursor: pointer;
+	border:none;
+	background: transparent;
+	font-size: 16px;
+	
+}
+
+header .mode_standard {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 1140px;
+	flex-wrap: nowrap;
+	margin-top: 50px;
 }
 
 main {
@@ -101,6 +138,10 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
+nav li a {
+	color:black;
+	text-decoration: none;
+}
 
 li:hover {
 	color: #B1663C;
@@ -132,7 +173,7 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
-.gallery {
+#portfolio .galleryContainer {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -140,7 +181,7 @@ li:hover {
 	grid-row-gap: 20px;
 }
 
-.gallery img {
+#portfolio .galleryContainer img {
 	width: 100%;
 
 }
@@ -185,6 +226,7 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
 }
 
 footer {
@@ -203,7 +245,7 @@ footer nav ul {
 }
 
 
-/** ajout boutons sélction**/
+/** ajout boutons sélection**/
 #portfolio {
 	display:flex;
 	flex-direction: column;
@@ -213,7 +255,7 @@ footer nav ul {
 	margin-top: 100px;	
 }
 
-#portfolio> .blocbtn {
+#portfolio> .filterContainer {
 	display: flex;
 	flex-direction: row;
 	gap:20px;
@@ -223,7 +265,7 @@ footer nav ul {
 	padding-bottom: 30px;
 }
 
-.btn {
+.filter {
 	background:unset;
 	display: flex;
 	justify-content: center;
@@ -237,12 +279,140 @@ footer nav ul {
 	cursor: pointer;
 	padding: 10px 20px;
 }
-.btnactive:focus {
+
+ .active {
 	color:white;
 	background-color:#1D6154 ;
 }
 
-.btnactive:hover {
+.modifProjets {
+	display:flex;
+	gap:10px;
+	align-items: center;
+	position:relative;
+	top:123px;
+	left:160px;
+}
+
+.modifProjets .fa-pen-to-square {
+	cursor: pointer;
+}
+
+ /* // modal  */
+
+#modal1{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position:fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	height:100%;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background:white;
+	width: 50%;
+	padding: 10px;
+	border-radius: 12px;
+	position:sticky;
+	top:3%;
+	left: 20%;
+}
+
+.closeModalButton {
+	border:unset;
+	background: none;
+	padding-bottom: 35px;
+}
+.closeModalButton i {
+	border:2px solid transparent;
+}
+
+.title{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.modal-wrapper h1{
+	width: 100%;
+	text-align: center;
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 200;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.fa-regular.fa-rectangle-xmark {
+	display: block;
+	justify-content: right;
+	font-size: 18px;
+	color:black;
+	cursor: pointer;
+	border-color: white;
+	border: 2px solid transparent;	
+ 	background-clip: content-box;
+}
+
+.modal-wrapper .filter{
+	display: flex;
+	align-items: center;
+	height:40px;
+	width:200px;
+	font-size: 14px;
 	color:white;
-	background-color:#1D6154 ;
+	background-color:#1D6154;	
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+.picture_container{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	column-gap: 10px;
+	row-gap: 30px;
+	padding: 25px 0 60px 0;
+	border-bottom: 2px solid rgb(190, 190, 190);
+}
+
+.picture_container .work {
+	width: 100px;
+	height: 140px;
+}
+
+.picture_container img {
+	width: 100px;
+	height: 140px;
+}
+
+img {
+	object-fit: cover;
+}
+
+.trashModalButton {
+	border:transparent;
+	background-color:black;
+	border-color: transparent;
+	cursor: pointer;
+	position:relative;
+	top: -135px;
+	left: 68px;
+	
+}
+
+.fa-regular.fa-trash-can {
+	font-size: 14px;
+	color:white;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	
+
 }
