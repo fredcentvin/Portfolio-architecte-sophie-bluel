@@ -6,8 +6,7 @@ let filterContainer = null;
 let galleryContainer = null;
 let currentFilter = 0;
 let deleteModal = null;
-let deleteBt= null;
-btnCloseModal = document.getElementById('closeModal')
+let deleteBt = null;
 
 
 // fonctions
@@ -21,6 +20,7 @@ async function fetchWorks(){
     const response = await fetch(apiUrl + 'works');
     const data = await response.json();
     works = data;
+    console.log(works)
 }
 
 function displayCategories(){
@@ -29,7 +29,7 @@ function displayCategories(){
         categoryElement.className = 'filter';
         categoryElement.innerHTML = category.name;
         filterContainer.appendChild(categoryElement);
-        categoryElement.addEventListener('click', (event) => filterWorks(category.id, event));
+        categoryElement.addEventListener('click', (event) => filterWorks(category.id, event));   
     });
 }
 
@@ -54,6 +54,7 @@ function displayWorks(){
 function displayDeleteModalWorks() {
     deleteModal.innerHTML = '';
     works.forEach(work => {
+       
         buildDeleteModalWorkHtml(work);
     });
 }
@@ -61,12 +62,18 @@ function displayDeleteModalWorks() {
 function buildDeleteModalWorkHtml(work){
     const workElement = document.createElement('div');
     workElement.className = 'work';
+    workElement.setAttribute("workid", work.id);
     workElement.innerHTML = `
         <figure>
             <img src="${work.imageUrl}" alt="${work.title}">
-            <button class="trashModalButton"><i class="fa-regular fa-trash-can" id="trash"></i></button>
+            <button class="trashModalButton" type="button"><i class="fa-regular fa-trash-can"></i></button>   
         </figure>
     `;
+    workElement.querySelector("button").addEventListener("click", (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        deleteWork(work.id)
+    })
     deleteModal.appendChild(workElement);
 }
 
@@ -91,7 +98,7 @@ async function init() {
     title = document.getElementById('title');
     deleteBt = document.getElementById('btDelete');
     deleteModal = document.getElementById('deleteModal');
-    modal1 = document.getElementById('modal1')
+    modal1 = document.getElementById('modal1');
    
 
     // connecter des actions
@@ -111,14 +118,14 @@ async function init() {
 function showDeleteModal() {
     modal1.style.display ='block';
     deleteModal.style.display ='grid';
-   
-    displayDeleteModalWorks()
+    displayDeleteModalWorks();
 }
 
 // eventlistener
 document.addEventListener('DOMContentLoaded', init);
 
 
+// modifs affichage DOM après login
 function changeDisplayHtml(){
     const logout = document.getElementById("logout");
     const login = document.getElementById("login");
@@ -143,6 +150,7 @@ function changeDisplayHtml(){
     }
 }
 changeDisplayHtml()
+
 
 // fonction déconnexion admin
 logout.addEventListener("click", function() {
