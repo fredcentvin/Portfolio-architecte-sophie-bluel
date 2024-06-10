@@ -20,7 +20,7 @@ async function fetchWorks(){
     const response = await fetch(apiUrl + 'works');
     const data = await response.json();
     works = data;
-    console.log(works)
+    // console.log(works)
 }
 
 function displayCategories(){
@@ -36,8 +36,9 @@ function displayCategories(){
 
 function filterWorks(categoryId, event) {
     currentFilter = categoryId;
-    document.querySelector('button').classList.remove('active');
-    event.target.classList.add('active');
+    const buttons = document.querySelectorAll('button'); 
+    buttons.forEach(button => button.classList.remove('active')); 
+    event.target.classList.add('active'); 
     displayWorks();
 }
 
@@ -119,6 +120,7 @@ function showDeleteModal() {
     modal1.style.display ='block';
     deleteModal.style.display ='grid';
     displayDeleteModalWorks();
+    loadCategories()
 }
 
 // eventlistener

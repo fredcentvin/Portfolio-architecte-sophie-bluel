@@ -285,7 +285,7 @@ footer nav ul {
 	padding-bottom: 30px;
 }
 
-.filter {
+ .filter {
 	background:unset;
 	display: flex;
 	justify-content: center;
@@ -301,7 +301,7 @@ footer nav ul {
 	margin-bottom: 15px;
 }
 
-.active {
+ .active {
 	color:white;
 	background-color:#1D6154 ;
 }
@@ -345,7 +345,11 @@ footer nav ul {
 	top:10px;
 	left:25%;
 }
-
+ #addPic {
+	position:absolute;
+	top:10px;
+	left:25%;
+ }
 
 .closeModalButton {
 	border:unset;
@@ -420,26 +424,61 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	padding: 10px;
+	padding: 20px;
+	margin: 20px 100px 20px 100px;
 	align-items: center;
 	background: rgb(220, 220, 249);
+	border-radius: 5px;
+}
+#modal1 .filter {
+	padding: 10px 30px;
+	margin: 5px 0 20px 0;
 }
 
-#addPic .filter{
-	display: flex;
+
+ .filterBtn{
+	display:flex;
+	background:rgb(211, 210, 210); 
+	color: rgb(35, 93, 122);
+	border:none;
+	margin-top: 10px;
+	margin-bottom: 40px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	border-radius: 25px;
+	width: 200px;
+	height: 40px;
 	align-items: center;
-	height:40px;
-	width:200px;
-	font-size: 14px;
-	color:white;
-	background-color:#1D6154;	
-	margin-top: 30px;
-	margin-bottom: 30px;	
+	justify-content: center;
+	margin-left: 38%;
 }
+
+.active {
+	color:white;
+	background-color:#1D6154 ;
+}
+
+
+#choice{
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+#Choice .filter{
+	display:flex;
+	background:rgb(211, 210, 210); 
+	color: rgb(35, 93, 122);
+	border:none;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+}
+
 
 #modal2 #addPic {
 	display:flex;
-	height: 600px;
+	width: 750px;
 	padding: 15px;
 }
 
@@ -471,36 +510,47 @@ footer nav ul {
 	width: 500px ;
 	padding-top: 25px;
 	gap:15px;	
+	border-radius: 12px;
 }
 
 form .border{
 	border:2px solid rgb(190, 190, 190);	
+	width:73%;
+	margin-left: 100px;
+	margin-top: 30px;
+	
 }
 
 .modal-wrapper .border{
 	border:2px solid rgb(190, 190, 190);
-	width:100%;
-	margin-bottom: 15px;
+	width:65%;
+	margin-bottom: 30px;
+	margin-top: 20px;
+	margin-left: 0;
+
 }
 
 form img {
-	width:100px;
-	height:145px;
-	margin-bottom: 25px;
-	padding-left: 200px;
+	width:150px;
+	height:195px;
 }
 
 form input, form select {
-	height: 60px ;
+	height: 50px ;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	background: white;
 	border:none;
-	margin-bottom: 10px;
-	margin-top: 10px;
+	margin:0 100px 0 100px;
+	
+}
+form label {
+	margin-left: 100px;
 }
 
-input label {
-	font-size: 18px;
+#addPic input {
+	font-size: 14px;
+	margin-left: 100px;
+	margin-top: 0;
 }
 
 form #inputFile {
@@ -511,29 +561,18 @@ form #inputFile {
 	height:20px;
 }
 
-
-#modal2 #addPic .filter{
-	display:flex;
-	background:rgb(211, 210, 210); 
-	color: rgb(35, 93, 122);
-	border:none;
-	margin-top: 10px;
-	margin-bottom: 20px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: 500;
-}
-
-#modal2 #validate {
-	margin-left: 30%;
+#addPic h3{
+	font-size: 22px;
+	text-align: center;
 }
 
 .picture_container{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
-	column-gap: 10px;
+	column-gap: 15px;
 	row-gap: 30px;
-	padding: 0 0 40px 0;
+	padding: 0 0 50px 0;
 }
 
 .picture_container .work {
@@ -557,20 +596,20 @@ img {
 	border-color: transparent;
 	cursor: pointer;
 	position:absolute;
-	top: 10px;
-	right: 10px;	
+	top: 6px;
+	right: 6px;	
 }
 
 .fa-regular.fa-trash-can {
 	font-size: 10px;
 	color:white;
 	padding-top: 2px;
-	padding-bottom: 2px;
+	padding-bottom: 4px;
 	padding-left: 0;
 	padding-right: 0;
 }
 
 .importFile .fig{
-	width:150px;
-	height:180px;
+	width:170px;
+	height:250px;
 }
