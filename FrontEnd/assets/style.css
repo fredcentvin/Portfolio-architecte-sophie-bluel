@@ -613,3 +613,43 @@ img {
 	width:170px;
 	height:250px;
 }
+
+/* // affichage version mobile */
+
+@media (max-width: 767px){
+header {
+	padding: 0 10px 0 10px;
+}
+
+body {
+	margin: auto;
+	padding: 0 10px 0 10px;;
+}
+
+#introduction {
+	padding: 0 10px 0 10px;
+}
+
+#introduction img {
+	margin: 0;
+}
+
+#portfolio {
+	gap: 0;
+	margin-top: 50px;
+}
+
+#portfolio .galleryContainer{
+	grid-column-gap: 10px;
+	padding-left: 0 10px 0 10px;
+}
+
+.modifProjets{
+	top: 23px;
+}
+
+form input {
+	margin: 0;
+}
+
+}
