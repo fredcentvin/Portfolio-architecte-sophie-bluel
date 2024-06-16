@@ -2,7 +2,7 @@
 const apiUrl = "http://localhost:5678/api/";
 const form = document.querySelector("form");
 const submit = document.querySelector("form #submit");
-const messError = document.querySelector("#connexion p");
+const messError = document.querySelector("#messageerreur");
 let userInfos ={
 email : document.getElementById("email"),
 password : document.getElementById("password")
@@ -35,7 +35,7 @@ async function login() {
     }
     catch (error) {
         console.error("Erreur réseau :", error);
-        messError.textContent = "Veuillez vérifier votre connexion";
+        messError.textContent = "Veuillez saisir vos identifiants";
     }
     }
 

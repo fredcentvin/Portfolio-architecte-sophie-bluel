@@ -55,7 +55,6 @@ btnForward.addEventListener("click", function(event) {
   form.querySelector('#previewImage').style.display="none";
   document.getElementById('picChoice').style.padding="10px";
   btnValidateChoice.classList.remove('active');  
-
 });
 
 

@@ -120,7 +120,7 @@ function showDeleteModal() {
     modal1.style.display ='block';
     deleteModal.style.display ='grid';
     displayDeleteModalWorks();
-    loadCategories()
+    loadCategories();
 }
 
 // eventlistener
